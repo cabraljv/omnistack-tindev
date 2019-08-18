@@ -8,8 +8,8 @@ for run this aplication you need to install node 10, npm and if possible the yar
 
 for install:
 
-$ cd frontend/ && npm install
-$ cd backend/ && nom install
+`$ cd frontend/ && npm install`
+`$ cd backend/ && nom install`
 
 coming soon a mobile interface
 

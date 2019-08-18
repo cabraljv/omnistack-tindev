@@ -18,16 +18,16 @@ export default function Main({ match }) {
     loadUsers();
   }, [match.params.id])
 
-  function handleLike(id) {
-    console.log(id)
-    api.post(`/devs/${id}/like`, {
+  async function handleLike(id) {
+    console.log(match.params.id)
+    await api.post(`/devs/${id}/like`, null, {
       headers: {
         user: match.params.id
       }
     })
   }
   function handleDislike(id) {
-    api.post(`/devs/${id}/dislike`, {
+    api.post(`/devs/${id}/dislike`, null, {
       headers: {
         user: match.params.id
       }
@@ -45,15 +45,16 @@ export default function Main({ match }) {
             <footer>
               <strong>{user.name}</strong>
               <p>{user.bio}</p>
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(user._id)}>
-                  <img src={dislike} alt="dislike" alt="dislike" />
-                </button>
-                <button type="button" onClick={() => handleLike(user._id)}>
-                  <img src={like} alt="like" alt="like" />
-                </button>
-              </div>
+
             </footer>
+            <div className="buttons">
+              <button type="button" onClick={() => handleDislike(user._id)}>
+                <img src={dislike} alt="dislike" alt="dislike" />
+              </button>
+              <button type="button" onClick={() => handleLike(user._id)}>
+                <img src={like} alt="like" alt="like" />
+              </button>
+            </div>
           </li>
         ))}
       </ul>
